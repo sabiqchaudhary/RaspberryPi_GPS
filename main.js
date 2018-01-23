@@ -4,13 +4,13 @@ const net = require('net');
 const util = require('util');
 
 // load config file
-var cfg = JSON.parse(fs.readFileSync('config.json', 'utf-8'));
+var config = JSON.parse(fs.readFileSync('config.json', 'utf-8'));
 let data = '';
 var ACTION = process.argv[2];
-var n_byte_being_sent = 0;
+//var n_byte_being_sent = 0;
 
-const client = net.createConnection({port: cfg.PORT_NUMBER, host: cfg.SERVER_IP}, () => {
-    console.log("connected to " + cfg.SERVER_IP + ":" + cfg.PORT_NUMBER);
+const client = net.createConnection({port: config.PORT_NUMBER, host: config.SERVER_IP}, () => {
+    console.log("connected to " + config.SERVER_IP + ":" + config.PORT_NUMBER);
 
     if (ACTION == 'register') send_json({command: "newkey"});
     else if (ACTION == 'consume') push_records(process.argv[3]);
@@ -39,7 +39,7 @@ client.on('data', (chunk) => {
             if (ACTION == 'fetch') {
                 fs.writeFileSync('./gps_db_fetch.json', JSON.stringify(response.result));
             } else if (ACTION == 'register') {
-                fs.writeFileSync(cfg.CLIENT_KEY_FILENAME, response.result);
+                fs.writeFileSync(config.CLIENT_KEY_FILENAME, response.result);
 
             }
             client.end();
@@ -69,8 +69,8 @@ function pull_records() {
     obj = {command: "get"};
 
     // read in the local client key
-    if (fs.existsSync(cfg.CLIENT_KEY_FILENAME)) {
-        obj.client_key = fs.readFileSync(cfg.CLIENT_KEY_FILENAME).toString();
+    if (fs.existsSync(config.CLIENT_KEY_FILENAME)) {
+        obj.client_key = fs.readFileSync(config.CLIENT_KEY_FILENAME).toString();
     } else {
         throw new Error("No client key found... first, issue node gps_client.js register");
     }

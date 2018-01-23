@@ -2,7 +2,7 @@
   "name": "raspberrypi_gps",
   "version": "1.0.0",
   "description": "This module creates a project to interface with the  L80-39 GPS Chip via USB and appropriately handling the data",
-  "main": "index.js",
+  "main": "alternative_main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -20,5 +20,11 @@
   "bugs": {
     "url": "https://github.com/sabiqchaudhary/RaspberryPi_GPS/issues"
   },
-  "homepage": "https://github.com/sabiqchaudhary/RaspberryPi_GPS#readme"
+  "homepage": "https://github.com/sabiqchaudhary/RaspberryPi_GPS#readme",
+  "dependencies": {
+    "rpi-gpio": "*",
+    "gps": "*",
+    "shelljs": "*",
+    "delay": "*"
+  }
 }
