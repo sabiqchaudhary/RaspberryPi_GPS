@@ -25,6 +25,11 @@
     "rpi-gpio": "*",
     "gps": "*",
     "shelljs": "*",
-    "delay": "*"
+    "delay": "*",
+    "python-shell": "*",
+    "child-process": "*",
+    "nmea": "*",
+    "serialgps": "*",
+    "serialport": "*"
   }
 }
