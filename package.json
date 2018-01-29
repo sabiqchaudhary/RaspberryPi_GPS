@@ -22,14 +22,14 @@
   },
   "homepage": "https://github.com/sabiqchaudhary/RaspberryPi_GPS#readme",
   "dependencies": {
-    "rpi-gpio": "*",
-    "gps": "*",
-    "shelljs": "*",
-    "delay": "*",
-    "python-shell": "*",
     "child-process": "*",
-    "nmea": "*",
+    "delay": "*",
+    "gps": "*",
+    "nmea": "^0.1.0",
+    "python-shell": "*",
+    "rpi-gpio": "*",
     "serialgps": "*",
-    "serialport": "*"
+    "serialport": "^6.0.4",
+    "shelljs": "*"
   }
 }
